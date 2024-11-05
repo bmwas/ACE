@@ -40,7 +40,7 @@
 * **[2024.9.30]** Release the paper of ACE on arxiv.
 * **[2023.10.31]** Release the ACE checkpoint on [ModelScope](https://www.modelscope.cn/models/iic/ACE-0.6B-512px) and [HuggingFace](https://huggingface.co/scepter-studio/ACE-0.6B-512px).
 * **[2023.11.1]** Support online demo on [HuggingFace](https://huggingface.co/spaces/scepter-studio/ACE-Chat).
-* **[TODO]** Release the FLUX-ACE model, which trained on top of FLUX.1 (14B), to enhance image quality and improve aesthetic appeal.
+* **[TODO]** Release the FLUX-ACE model, which trained on top of FLUX.1 (12B), to enhance image quality and improve aesthetic appeal.
 
 
 ## 🚀 Installation
