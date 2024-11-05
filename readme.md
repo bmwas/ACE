@@ -1,6 +1,6 @@
 <p align="center">
 
-  <h2 align="center"><img src="assets/figures/icon.png" height=16> : All-round Creator and Editor Following Instructions via Diffusion Transformer</h2>
+  <h2 align="center"><img src="assets/figures/icon.png" height=16> : All-round Creator and Editor Following <br> Instructions via Diffusion Transformer</h2>
 
   <p align="center">
     <a href="https://arxiv.org/abs/2410.00086"><img src='https://img.shields.io/badge/arXiv-ACE-red' alt='Paper PDF'></a>
@@ -84,9 +84,7 @@ PYTHONPATH=. python chatbot/run_gradio.py --cfg chatbot/config/chatbot_ui.yaml
 <table align="center">
   <tr>
   <td>
-    <video height="600" controls>
-      <source src="https://ali-vilab.github.io/ace-page/static/videos/demo_chat_crop_v3.webm" type="video/webm">
-    </video>
+    <img src="assets/videos/demo_chat.gif">
   </td>
   </tr>
 </table>
