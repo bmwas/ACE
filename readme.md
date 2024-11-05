@@ -80,7 +80,7 @@ We have developed an chatbot UI utilizing Gradio, designed to transform user inp
 PYTHONPATH=. python chatbot/run_gradio.py --cfg chatbot/config/chatbot_ui.yaml
 ```
 
-<table align="center">
+<!-- <table align="center">
   <tr>
   <td>
     <video height="600" controls>
@@ -88,7 +88,7 @@ PYTHONPATH=. python chatbot/run_gradio.py --cfg chatbot/config/chatbot_ui.yaml
     </video>
   </td>
   </tr>
-</table>
+</table> -->
 
 
 
