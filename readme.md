@@ -38,6 +38,7 @@
 * **[2024.9.30]** Release the paper of ACE on arxiv.
 * **[2023.10.31]** Release the ACE checkpoint on [ModelScope](https://www.modelscope.cn/models/iic/ACE-0.6B-512px) and [HuggingFace](https://huggingface.co/scepter-studio/ACE-0.6B-512px).
 * **[2023.11.1]** Support online demo on [HuggingFace](https://huggingface.co/spaces/scepter-studio/ACE-Chat).
+* **[TODO]** Release the FLUX-ACE model, which trained on top of FLUX.1 (14B), to enhance image quality and improve aesthetic appeal.
 
 
 ## 🚀 Installation
@@ -80,15 +81,15 @@ We have developed an chatbot UI utilizing Gradio, designed to transform user inp
 PYTHONPATH=. python chatbot/run_gradio.py --cfg chatbot/config/chatbot_ui.yaml
 ```
 
-<!-- <table align="center">
+<table align="center">
   <tr>
   <td>
     <video height="600" controls>
-      <source src="assets/videos/demo_chat.mp4" type="video/mp4">
+      <source src="https://ali-vilab.github.io/ace-page/static/videos/demo_chat_crop_v3.webm" type="video/webm">
     </video>
   </td>
   </tr>
-</table> -->
+</table>
 
 
 
