@@ -91,6 +91,53 @@ PYTHONPATH=. python chatbot/run_gradio.py --cfg chatbot/config/chatbot_ui.yaml
   </tr>
 </table>
 
+## ⚙️️ ComfyUI Workflow
+
+![Workflow](assets/comfyui/ace_example.jpg)
+
+We support the use of ACE in the ComfyUI Workflow through the following methods:
+
+1) Automatic installation directly via the ComfyUI Manager by searching for the **ComfyUI-Scepter** node.
+2) Manually install by moving custom_nodes from Scepter to ComfyUI.
+```shell
+git clone https://github.com/modelscope/scepter.git
+cd path/to/scepter
+pip install -e .
+cp -r path/to/scepter/workflow/ path/to/ComfyUI/custom_nodes/ComfyUI-Scepter
+cd path/to/ComfyUI
+python main.py
+```
+
+**Note**: You can use the nodes by dragging the sample images below into ComfyUI. Additionally, our nodes can automatically pull models from ModelScope or HuggingFace by selecting the *model_source* field, or you can place the already downloaded models in a local path.
+
+<table><tbody>
+  <tr>
+    <th align="center" colspan="4">ACE Workflow Examples</th>
+  </tr>
+  <tr>
+    <th align="center" colspan="1">Control</th>
+    <th align="center" colspan="1">Semantic</th>
+    <th align="center" colspan="1">Element</th>
+  </tr>
+  <tr>
+    <td>
+      <a href="assets/comfyui/ace_control.png" target="_blank">
+        <img src="assets/comfyui/ace_control.png" width="200">
+      </a>
+    </td>
+    <td>
+      <a href="assets/comfyui/ace_semantic.png" target="_blank">
+        <img src="assets/comfyui/ace_semantic.png" width="200">
+      </a>
+    </td>
+    <td>
+      <a href="assets/comfyui/ace_element.png" target="_blank">
+        <img src="assets/comfyui/ace_element.png" width="200">
+      </a>
+    </td>
+  </tr>
+</tbody>
+</table>
 
 
 ## 📝 Citation
