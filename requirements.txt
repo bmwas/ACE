@@ -1,4 +1,4 @@
-scepter>=1.1.0
+git+https://github.com/modelscope/scepter.git@v1.3.0_dev#egg=scepter
 pycocotools
 pyyaml>=5.3.1
 scikit-image

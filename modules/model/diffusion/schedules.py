@@ -12,7 +12,7 @@ class ScheduleOutput(object):
     x_0: torch.Tensor
     t: torch.Tensor
     sigma: torch.Tensor
-    alpha: torch.Tensor
+    alpha_bar: torch.Tensor
     custom_fields: dict = field(default_factory=dict)
 
     def add_custom_field(self, key: str, value) -> None:
@@ -39,7 +39,8 @@ class LinearScheduler(BaseNoiseScheduler):
         sigmas = self.betas_to_sigmas(betas)
         self._sigmas = sigmas
         self._betas = betas
-        self._alphas = torch.sqrt(1 - sigmas**2)
+        self._alphas = torch.sqrt(1 - betas**2)
+        self._alphas_bar = torch.sqrt(1 - sigmas**2)
         self._timesteps = torch.arange(len(sigmas), dtype=torch.float32)
 
     def add_noise(self, x_0, noise=None, t=None, **kwargs):
@@ -51,4 +52,4 @@ class LinearScheduler(BaseNoiseScheduler):
         sigma = _i(self.sigmas, t, x_0)
         x_t = alpha * x_0 + sigma * noise
 
-        return ScheduleOutput(x_0=x_0, x_t=x_t, t=t, alpha=alpha, sigma=sigma)
+        return ScheduleOutput(x_0=x_0, x_t=x_t, t=t, alpha_bar=alpha, sigma=sigma)

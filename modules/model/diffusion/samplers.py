@@ -26,22 +26,35 @@ class DDIMSampler(BaseDiffusionSampler):
 
     def preprare_sampler(self,
                          noise,
+                         x=None,
                          steps=20,
+                         reverse_scale = -1.,
                          scheduler_ins=None,
                          prediction_type='',
                          sigmas=None,
                          betas=None,
                          alphas=None,
+                         alphas_bar=None,
                          callback_fn=None,
                          **kwargs):
-        output = super().preprare_sampler(noise, steps, scheduler_ins,
-                                          prediction_type, sigmas, betas,
-                                          alphas, callback_fn, **kwargs)
+        output = super().preprare_sampler(noise,
+                                          x = x,
+                                          steps = steps,
+                                          reverse_scale = reverse_scale,
+                                          scheduler_ins = scheduler_ins,
+                                          prediction_type = prediction_type,
+                                          sigmas = sigmas,
+                                          betas = betas,
+                                          alphas = alphas,
+                                          alphas_bar = alphas_bar,
+                                          callback_fn = callback_fn,
+                                          **kwargs)
         sigmas = output.sigmas
         sigmas = torch.cat([sigmas, sigmas.new_zeros([1])])
         sigmas_vp = (sigmas**2 / (1 + sigmas**2))**0.5
         sigmas_vp[sigmas == float('inf')] = 1.
         output.add_custom_field('sigmas_vp', sigmas_vp)
+        output.steps += 1
         return output
 
     def step(self, sampler_output):
@@ -49,10 +62,10 @@ class DDIMSampler(BaseDiffusionSampler):
         step = sampler_output.step
         t = sampler_output.ts[step]
         sigmas_vp = sampler_output.sigmas_vp.to(x_t.device)
-        alpha_init = _i(sampler_output.alphas_init, step, x_t[:1])
+        alpha_bar_init = _i(sampler_output.alphas_bar_init, step, x_t[:1])
         sigma_init = _i(sampler_output.sigmas_init, step, x_t[:1])
 
-        x = sampler_output.callback_fn(x_t, t, sigma_init, alpha_init)
+        x = sampler_output.callback_fn(x_t, t, sigma_init, alpha_bar_init)
         noise_factor = self.eta * (sigmas_vp[step + 1]**2 /
                                    sigmas_vp[step]**2 *
                                    (1 - (1 - sigmas_vp[step]**2) /
