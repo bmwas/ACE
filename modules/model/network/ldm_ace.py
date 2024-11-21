@@ -10,15 +10,14 @@ from torch import nn
 
 from scepter.modules.model.network.ldm import LatentDiffusion
 from scepter.modules.model.registry import MODELS
+import torchvision.transforms as T
+from scepter.modules.model.utils.basic_utils import check_list_of_list
+from scepter.modules.model.utils.basic_utils import \
+    pack_imagelist_into_tensor_v2 as pack_imagelist_into_tensor
+from scepter.modules.model.utils.basic_utils import (
+    to_device, unpack_tensor_into_imagelist)
 from scepter.modules.utils.config import dict_to_yaml
 from scepter.modules.utils.distribute import we
-
-from ..utils.basic_utils import (
-    check_list_of_list,
-    pack_imagelist_into_tensor_v2 as pack_imagelist_into_tensor,
-    to_device,
-    unpack_tensor_into_imagelist
-)
 
 
 class TextEmbedding(nn.Module):
@@ -69,10 +68,10 @@ class LdmACE(LatentDiffusion):
         if self.use_text_pos_embeddings and not torch.sum(
                 self.text_position_embeddings.pos) > 0:
             identifier_cont, identifier_cont_mask = getattr(
-                self.cond_stage_model, 'encode')(self.text_indentifers,
+                self.cond_stage_model, 'encode_list_of_list')(self.text_indentifers,
                                                  return_mask=True)
             self.text_position_embeddings.load_state_dict(
-                {'pos': identifier_cont[:, 0, :]})
+                {'pos': torch.cat( [one_id[0][0, :].unsqueeze(0) for one_id in identifier_cont], dim=0)})
         cont_, cont_mask_ = [], []
         for pp, edit, c, cm in zip(prompt, edit_image, cont, cont_mask):
             if isinstance(pp, list):
@@ -140,7 +139,7 @@ class LdmACE(LatentDiffusion):
         prompt_ = [[pp] if isinstance(pp, str) else pp for pp in prompt]
         try:
             cont, cont_mask = getattr(self.cond_stage_model,
-                                      'encode_list')(prompt_, return_mask=True)
+                                      'encode_list_of_list')(prompt_, return_mask=True)
         except Exception as e:
             print(e, prompt_)
         cont, cont_mask = self.cond_stage_embeddings(prompt, edit_image, cont,
@@ -242,11 +241,11 @@ class LdmACE(LatentDiffusion):
         # with torch.autocast(device_type="cuda", enabled=True, dtype=torch.bfloat16):
         prompt_ = [[pp] if isinstance(pp, str) else pp for pp in prompt]
         cont, cont_mask = getattr(self.cond_stage_model,
-                                  'encode_list')(prompt_, return_mask=True)
+                                  'encode_list_of_list')(prompt_, return_mask=True)
         cont, cont_mask = self.cond_stage_embeddings(prompt, edit_image, cont,
                                                      cont_mask)
         null_cont, null_cont_mask = getattr(self.cond_stage_model,
-                                            'encode_list')(n_prompt,
+                                            'encode_list_of_list')(n_prompt,
                                                            return_mask=True)
         null_cont, null_cont_mask = self.cond_stage_embeddings(
             prompt, edit_image, null_cont, null_cont_mask)
