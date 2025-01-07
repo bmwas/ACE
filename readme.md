@@ -41,7 +41,8 @@
 * **[2024.10.31]** Release the ACE checkpoint on [ModelScope](https://www.modelscope.cn/models/iic/ACE-0.6B-512px) and [HuggingFace](https://huggingface.co/scepter-studio/ACE-0.6B-512px).
 * **[2024.11.1]** Support online demo on [HuggingFace](https://huggingface.co/spaces/scepter-studio/ACE-Chat).
 * **[2024.11.20]** Release the [ACE-0.6b-1024px](https://huggingface.co/scepter-studio/ACE-0.6B-1024px) model, 
-which significantly enhances image generation quality compared with [ACE-0.6b-512px](https://huggingface.co/scepter-studio/ACE-0.6B-512px). 
+which significantly enhances image generation quality compared with [ACE-0.6b-512px](https://huggingface.co/scepter-studio/ACE-0.6B-512px).
+* **[2025.01.06]** Release the [ACE++](https://ali-vilab.github.io/ACE_plus_page/).
 
 
 ## 🚀 Installation
@@ -55,7 +56,7 @@ pip install -r requirements.txt
 |:----------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 |  ACE-0.6B-512px  |          [![Demo link](https://img.shields.io/badge/Demo-ACE_Chat-purple)](https://huggingface.co/spaces/scepter-studio/ACE-Chat)<br>[![ModelScope link](https://img.shields.io/badge/ModelScope-Model-blue)](https://www.modelscope.cn/models/iic/ACE-0.6B-512px)  [![HuggingFace link](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-yellow)](https://huggingface.co/scepter-studio/ACE-0.6B-512px)          |
 | ACE-0.6B-1024px  | [![ModelScope link](https://img.shields.io/badge/ModelScope-Model-blue)](https://www.modelscope.cn/models/iic/ACE-0.6B-1024px)  [![HuggingFace link](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-yellow)](https://huggingface.co/scepter-studio/ACE-0.6B-1024px) |             |
-| ACE-12B-FLUX-dev |                                                                                                                                                                                                            Coming Soon                                                                                                                                                                                                            |
+| ACE-12B-FLUX-dev |                                                                                                                                        The ACE model based on the FLUX.1-dev base model has adopted a new adaptation method. We have organized a new project called [ACE++](https://ali-vilab.github.io/ACE_plus_page/). The relevant models have been open-sourced. Please visit to learn more.                                                                                                                                               |             |
 
 ## 🖼 Model Performance Visualization
 
