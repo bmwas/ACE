@@ -13,8 +13,8 @@ DEFAULT_PARAS:
     OUTPUT_HEIGHT: 512
     OUTPUT_WIDTH: 512
     SAMPLER: ddim
-    SAMPLE_STEPS: 20
-    GUIDE_SCALE: 4.5
+    SAMPLE_STEPS: 50
+    GUIDE_SCALE: 7.5
     GUIDE_RESCALE: 0.5
     SEED: -1
     TAR_INDEX: 0
@@ -121,7 +121,7 @@ MODEL:
     NAME: ACETextEmbedder
     PRETRAINED_MODEL: hf://scepter-studio/ACE-0.6B-512px@models/text_encoder/t5-v1_1-xxl/
     TOKENIZER_PATH: hf://scepter-studio/ACE-0.6B-512px@models/tokenizer/t5-v1_1-xxl
-    LENGTH: 120
+    LENGTH: 1
     T5_DTYPE: bfloat16
     ADDED_IDENTIFIER: [ '{image}', '{caption}', '{mask}', '{ref_image}', '{image1}', '{image2}', '{image3}', '{image4}', '{image5}', '{image6}', '{image7}', '{image8}', '{image9}' ]
     CLEAN: whitespace
