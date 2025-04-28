@@ -67,7 +67,7 @@ MODEL:
   #
   DIFFUSION_MODEL:
     NAME: DiTACE
-    PRETRAINED_MODEL: hf://scepter-studio/ACE-0.6B-512px@models/dit/ace_0.6b_512px.pth
+    PRETRAINED_MODEL: hf://Benson/ace-model-0.6b-512-complete@models/dit/ace_0.6b_512px.pth
     IGNORE_KEYS: [ ]
     PATCH_SIZE: 2
     IN_CHANNELS: 4
@@ -87,7 +87,7 @@ MODEL:
   FIRST_STAGE_MODEL:
     NAME: AutoencoderKL
     EMBED_DIM: 4
-    PRETRAINED_MODEL: hf://scepter-studio/ACE-0.6B-512px@models/vae/vae.bin
+    PRETRAINED_MODEL: hf://Benson/ace-model-0.6b-512-complete@models/vae/vae.bin
     IGNORE_KEYS: []
     #
     ENCODER:
